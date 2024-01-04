@@ -15,3 +15,4 @@ gradlew
 gradlew.bat
 settings.gradle
 /gradle/
+/src/test/java/tests/DraftTest.java
