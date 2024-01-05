@@ -6,10 +6,8 @@ import models.favorite.AddToFavoriteBodyModel;
 import models.favorite.AddToFavoriteResponseModel;
 import models.favorite.DeleteFromFavoriteResponseModel;
 import models.favorite.FavoriteRecordByIdResponseModel;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -73,7 +71,6 @@ public class FavoriteTests extends BaseTest {
     @Test
     @Feature("Favorite")
     @Owner("kegorova")
-    @Disabled("Does not work :( Take time to think and rewrite")
     @DisplayName("Remove cat image from favorites")
     void removeCatImageFromFavorite(){
         AddToFavoriteBodyModel requestAddToFavorite = new AddToFavoriteBodyModel();
@@ -88,16 +85,16 @@ public class FavoriteTests extends BaseTest {
                             .spec(addToFavoriteResponseSpec)
                             .extract().as(AddToFavoriteResponseModel.class)
         );
-        step("Save id of the record", () -> {
+        step("Verify response", () -> {
             assertEquals("SUCCESS", responseAddToFavorite.getMessage());
-            int savedId = responseAddToFavorite.getId();
         });
 
+        var savedId = responseAddToFavorite.getId(); //save id of created favorite instance from step 1
 
         DeleteFromFavoriteResponseModel responseDeleteFromFavorite = step("Delete record by saved id", () ->
                                 given(deleteFromFavoriteRequestSpec).header("x-api-key", authConfig.authKey())
                                 .when()
-                                    .delete("/favourites/" + savedId) //todo
+                                    .delete("/favourites/" + savedId) //set saved id for deletion
                                 .then()
                                     .spec(deleteFromFavoriteResponseSpec)
                                     .extract().as(DeleteFromFavoriteResponseModel.class)
