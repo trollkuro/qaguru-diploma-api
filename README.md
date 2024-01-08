@@ -65,14 +65,14 @@ gradle clean all_tests
 
 Build with parameters allows to customize your test run. For example, different environments to run.
 
-<img src="media/screenshots/Jenkins_common.png"/>
+<img src="media/screenshots/jenkins_common.png"/>
 
 <a id="telegram"></a>
 ## Telegram Notifications
 
 Telegram bot sends a brief report to a specified telegram chat by results of each build.
 
-<img src="media/screenshots/Telegram.png"/>
+<img src="media/screenshots/telegram.png"/>
 
 <a id="allure-report"></a>
 ## Report in Allure Report
