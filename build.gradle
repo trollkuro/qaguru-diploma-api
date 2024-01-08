@@ -52,3 +52,20 @@ tasks.withType(Test) {
         }
     }
 }
+
+task favorite_tests(type: Test) {
+    useJUnitPlatform{
+        includeTags("Favorite")
+    }
+}
+
+task image_tests(type: Test) {
+    useJUnitPlatform{
+        includeTags("Image")
+    }
+}
+
+task all_tests(type: Test) {
+    useJUnitPlatform{
+    }
+}

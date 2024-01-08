@@ -7,6 +7,7 @@ import models.favorite.AddToFavoriteResponseModel;
 import models.favorite.DeleteFromFavoriteResponseModel;
 import models.favorite.FavoriteRecordByIdResponseModel;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -19,6 +20,7 @@ import static specs.favorite.DeleteFromFavoriteSpec.deleteFromFavoriteResponseSp
 import static specs.favorite.FavoriteRecordByIdSpec.favoriteRecordRequestSpec;
 import static specs.favorite.FavoriteRecordByIdSpec.favoriteRecordResponseSpec;
 
+@DisplayName("Favorite image")
 public class FavoriteTests extends BaseTest {
 
     private static final String ADD_TO_FAVORITE_IMAGE_DATA = "iyFN2mF8l";
@@ -26,7 +28,8 @@ public class FavoriteTests extends BaseTest {
 
 
     @Test
-    @Feature("Favorite images")
+    @Tag("Favorite")
+    @Feature("Favorite")
     @Owner("kegorova")
     @DisplayName("Show favorite cat image by id")
     void getCatImageFavorites(){
@@ -47,6 +50,7 @@ public class FavoriteTests extends BaseTest {
     }
 
     @Test
+    @Tag("Favorite")
     @Feature("Favorite")
     @Owner("kegorova")
     @DisplayName("Add cat image to favorites")
@@ -69,6 +73,7 @@ public class FavoriteTests extends BaseTest {
     }
 
     @Test
+    @Tag("Favorite")
     @Feature("Favorite")
     @Owner("kegorova")
     @DisplayName("Remove cat image from favorites")
@@ -91,7 +96,7 @@ public class FavoriteTests extends BaseTest {
 
         var savedId = responseAddToFavorite.getId(); //save id of created favorite instance from step 1
 
-        DeleteFromFavoriteResponseModel responseDeleteFromFavorite = step("Delete record by saved id", () ->
+        DeleteFromFavoriteResponseModel responseDeleteFromFavorite = step("Delete added record by saved id", () ->
                                 given(deleteFromFavoriteRequestSpec).header("x-api-key", authConfig.authKey())
                                 .when()
                                     .delete("/favourites/" + savedId) //set saved id for deletion

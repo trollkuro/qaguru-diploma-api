@@ -1,4 +1,4 @@
-package specs.image;
+package models.image;
 
 import lombok.Data;
 
