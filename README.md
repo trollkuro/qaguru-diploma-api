@@ -75,7 +75,7 @@ Telegram bot sends a brief report to a specified telegram chat by results of eac
 <img src="media/screenshots/telegram.png"/>
 
 <a id="allure-report"></a>
-## Report in Allure Report
+## Report in [Allure Report](https://jenkins.autotests.cloud/job/C22-kryastin-diplomaApi/allure/)
 Main page with common information
 
 <img src="media/screenshots/allure_common.png"/>
